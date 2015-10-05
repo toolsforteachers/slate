@@ -1,9 +1,6 @@
 ---
 title: API Reference
 
-language_tabs:
-  - shell
-
 toc_footers:
   - <a href='mailto:admin@toolsforteachers.org.uk'>Request a Developer Key</a>
 
