@@ -16,59 +16,31 @@ Welcome to the Tools for Teachers API. You can use our API to access endpoints t
 
 # Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: your-api-key"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `your-api-key` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Tools for Teahers uses API keys to allow access to the API. You can request a new API key by email [admin@toolsforteachers.org.uk](admin@toolsforteachers.org.uk).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Tools for Teachers expects the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: your-api-key`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>your-api-key</code> with your personal API key.
 </aside>
 
-# Kittens
+# Curricula
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Get a list of the available Curricula
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://toolsforteachers.org.uk/api//v1/curricula"
+  -H "Authorization: your-api-key"
 ```
 
 > The above command returns JSON structured like this:
@@ -76,83 +48,50 @@ curl "http://example.com/api/kittens"
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "key": "national-curriculum-in-england",
+    "name": "National Curriculum in England",
+    "createdBy": "John Doe"
   },
   {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "key": "open-water-scuba-diving",
+    "name": "Open Water Scuba Diving",
+    "createdBy": "Jack Custow"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all available curricula
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://toolsforteachers.org.uk/api/v1/curricula`
 
-### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Get a specific Curriculum
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl "https://toolsforteachers.org.uk/api/v1/curricula/national-curriculum-in-england"
+  -H "Authorization: your-api-key"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+ WIP: json-to-retrieve
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific curricuculm.
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://toolsforteachers.org.uk/api/v1/curricula/<key>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+key | The key of the curriculum to retrieve
 
