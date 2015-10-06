@@ -131,7 +131,7 @@ It should be noted that a curriculum has the following hierarchical attributes.
 `GET https://toolsforteachers.org.uk/api/v1/curricula`
 
 
-## Get a Curriculum Description
+## Get Curriculum
 
 > Note that the attributes to be returned are defined by the `depth` parameter.
 
