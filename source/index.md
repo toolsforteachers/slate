@@ -233,7 +233,7 @@ key | The key of the curriculum attribute to retrieve. Can be a `subject`, `leve
 # Learner
 Learners are identified by their system-generated key or an email address.
 
-## Add a new learner
+## Add a Learner
 > Returns the following json:
 
 ``` json
@@ -252,7 +252,7 @@ Parameter | Type | Description
 name | String | Display name
 email | String | Email address
 
-## Update a learner
+## Update a Learner
 > Returns the following json:
 
 ``` json
@@ -270,6 +270,50 @@ Parameter | Type | Description
 ----------| -----|------------
 name | String | Display name
 email | String | Email address
+
+
+## Get a Learner Activity Record
+> Returns the following json:
+
+``` json
+{
+  "learner": "learner-key",
+  "assessments":
+  [
+    {
+      "assessor": "assessor-key",
+      "score": 0.6,
+      "rubric": "rubric-key",
+      "mark": 3,
+      "out_of": 5,
+      "objective":
+       {
+        "curriculum": "National Curriculum in England",
+        "subject": "Maths",
+        "level": "Year 6",
+        "topic": "Algebra",
+        "name": "Use simple formula",
+        "key": "use-simple-formula"
+      },
+      "posted_at": "updated-or-created-date"
+    }
+  ]
+}
+```
+Retrieves learner assessents, most recent first. Includes additional fields to help UI display:
+
+1. `mark`. The score as a representation of the rubric.
+
+2. `out_of`. The highest achievable score as a representation of the rubric.
+
+3. `objective_attributes`. The complete attribute set for the objective
+
+4. `posted_at`. Timestamp when the record was created or updated.
+
+### HTTP Request
+
+`GET https://toolsforteachers.org.uk/api/v1/learners/:key`
+
 
 # Pedagogy
 
