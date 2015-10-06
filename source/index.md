@@ -169,4 +169,62 @@ Parameter | Description
 --------- | -----------
 key | The key of the curriculum attribute to retrieve. Can be a `subject`, `level`, `topic` or `objective`
 
+# Pedagogy
 
+## Get all available Pedagogies
+
+> The endpoint returns JSON structured like this:
+
+```json
+[
+  {
+    "key": "character-learning-targets-exemplar",
+    "name": "Character Learning Targets Exemplar",
+    "editor": "John Doe"
+  }
+]
+```
+
+This endpoint retrieves all available pedagogie
+
+### HTTP Request
+
+`GET https://toolsforteachers.org.uk/api/v1/pedagogies`
+
+
+## Get Pedagogy Objectives
+
+```json
+{
+"key": "character-learning-targets-exemplar",
+"name": "Character Learning Targets Exemplar",
+"editor": "John Doe",
+"objectives":
+  [
+    {
+      "learning_attribute": "Collaboration and Leadership",
+      "learning_skill": "I can engage positively with others",
+      "name": "I can walk-my-talk by being a good role model",
+      "key": "i-can-walk-my-talk"
+    }
+  ]
+}
+```
+
+This endpoint retrieves the objectives of a specific pedagogy.
+
+It should be noted that a pedagogy has the following hierarchical attributes.
+
+1. Learning attribute (e.g. *Collaboration and leadership*)
+2. Learning skill (if defined, e.g. *I can engage positively with others*)
+4. Objective (e.g. *I can walk-my-talk by being a good role model*)
+
+### HTTP Request
+
+`GET https://toolsforteachers.org.uk/api/v1/pedagogy-objectives/<key>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+key | The key of the pedagogy to retrieve
