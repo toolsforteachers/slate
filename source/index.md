@@ -34,9 +34,9 @@ Tools for Teachers expects the API key to be included in all API requests to the
 You must replace <code>your-api-key</code> with your personal API key.
 </aside>
 
-# Curricula
+# Curriculum
 
-## Get a list of the available Curricula
+## Get all available Curricula
 
 > The endpoint returns JSON structured like this:
 
@@ -57,62 +57,64 @@ You must replace <code>your-api-key</code> with your personal API key.
 
 This endpoint retrieves all available curricula
 
+It should be noted that a curriculum has the following hierarchical attributes.
+
+1. Subject (e.g. *Maths*)
+2. Level (e.g. *Year 6*)
+3. Topic (e.g. *Algebra*)
+4. Prompt (if defined, e.g. *Students are expected to*)
+4. Objective (e.g. *Enumerate possibilities of combinations of 2 variables*)
+
 ### HTTP Request
 
 `GET https://toolsforteachers.org.uk/api/v1/curricula`
 
 
-## Get a specific Curriculum
+## Get a Curriculum Description
 
-> The above command returns JSON structured like this. Note that the attributes returned are defined by the `depth` parameter.
+> Note that the attributes to be returned are defined by the `depth` parameter.
 
 ```json
 {
- "key": "national-curriculum-in-england",
- "name": "National Curriculum in England",
- "editor": "John Doe",
- "attributes":
+"key": "national-curriculum-in-england",
+"name": "National Curriculum in England",
+"editor": "John Doe",
+
+"subjects":
   [
     {
-      "subject":
-        {
-          "name": "Maths",
-          "key": "national-curriculum-maths"
-        },
-      "level":
-        {
-          "name": "Year 6",
-          "key": "maths-year-6"
-        },
-      "topic":
-        {
-          "name": "Algebra",
-          "key": "maths-year-6-algebra"
-        },
-      "prompt": "Students are expected to:",
-      "objective":
-        {
-          "name": "Enumerate possibilities of combinations of 2 variables",
-          "key": "enumerate-possibilities-of-combinations-of-2-variables"
-        }
+      "name": "Maths",
+      "key": "national-curriculum-maths",
+      "levels":
+        [
+          {
+            "name": "Year 5",
+            "key": "maths-year-5"
+          },
+          {
+            "name": "Year 6",
+            "key": "maths-year-6",
+            "topics":
+              [
+                {
+                  "name": "Algebra",
+                   "key": "maths-year-6-algebra"
+                }
+              ]
+          },
+        ]
     }
   ]
 }
+
 ```
 
-This endpoint retrieves the details of a specific curriculum.
+This endpoint retrieves the descriptive attributes of a specific curriculum.
 
-It should be noted that curriculum has the following hierarchical attributes.
+Use the `curriculum-attribute` endpoint to retrieve `objectives`.
 
-1. Subject (e.g. *Maths*)
-2. Level (e.g. *Year 6*)
-3. Topic (e.g. *Algebra*)
-4. Prompt (optional descriptive text, e.g. *Students are expectected to*)
-4. Objective (e.g. *Enumerate possibilities of combinations of 2 variables*)
+The parameter `depth` determines which attributes are retrieved for that curriculum. Choosing `level`, for example, will retrieve Subject and Level attributes.
 
-The parameter `depth` determines which attributes are retrieved for that curriculum. Choosing `topic`, for example, will retrieve Subject, Level and Topic attributes.
-
-Note that choosing `objective` might return a large, unwieldy dataset.
 
 ### HTTP Request
 
@@ -123,4 +125,48 @@ Note that choosing `objective` might return a large, unwieldy dataset.
 Parameter | Description
 --------- | -----------
 key | The key of the curriculum to retrieve
-_depth | Choose from `subject`, `level`, `topic`, `objective`. Defaults to `subject` (optional)
+depth | Choose from `subject`, `level` or `topic`. Defaults to `level` (optional)
+
+## Get Curriculum Objectives
+
+> This example json would be returned from a request for a `topic` attribute,
+
+```json
+{
+"finder": "maths-year-6-algebra",
+"objectives":
+  [
+    {
+      "curriculum": "National Curriculum in England",
+      "subject": "Maths",
+      "level": "Year 6",
+      "topic": "Algebra",
+      "prompt": "Students are expected to:",
+      "name": "Enumerate possibilities of combinations of 2 variables",
+      "key": "enumerate-possibilities-of-combinations-of-2-variables"
+    },
+    {
+      "curriculum": "National Curriculum in England",
+      "subject": "Maths",
+      "level": "Year 6",
+      "topic": "Algebra",
+      "name": "Use simple formula",
+      "key": "use-simple-formula"
+    }
+  ]
+}
+```
+
+This endpoint accepts a key for any attribute in the curriculum attribute hierarchy and returns all the objectives associated with that finder.
+
+### HTTP Request
+
+`GET https://toolsforteachers.org.uk/api/v1/curriculum-objectives/<key>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+key | The key of the curriculum attribute to retrieve. Can be a `subject`, `level`, `topic` or `objective`
+
+
