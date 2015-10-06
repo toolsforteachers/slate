@@ -59,11 +59,15 @@ This endpoint retrieves all available curricula
 
 It should be noted that a curriculum has the following hierarchical attributes.
 
-1. Subject (e.g. *Maths*)
-2. Level (e.g. *Year 6*)
-3. Topic (e.g. *Algebra*)
-4. Prompt (if defined, e.g. *Students are expected to*)
-4. Objective (e.g. *Enumerate possibilities of combinations of 2 variables*)
+1. `subject` (e.g. *Maths*)
+
+2. `level` (e.g. *Year 6*)
+
+3. `topic` (e.g. *Algebra*)
+
+4. `prompt` (if defined, e.g. *Students are expected to*)
+
+5. `objective` (e.g. *Enumerate possibilities of combinations of 2 variables*)
 
 ### HTTP Request
 
@@ -129,7 +133,7 @@ depth | Choose from `subject`, `level` or `topic`. Defaults to `level` (optional
 
 ## Get Curriculum Objectives
 
-> This example json would be returned from a request for a `topic` attribute,
+> This example json would be returned from a request for a `topic` attribute with a key `maths-year-6-algebra`:
 
 ```json
 {
@@ -213,7 +217,7 @@ This endpoint retrieves all available pedagogie
 
 This endpoint retrieves the objectives of a specific pedagogy.
 
-It should be noted that a pedagogy has the following hierarchical attributes.
+It should be noted that a pedagogy has the following hierarchical attributes:
 
 1. Learning attribute (e.g. *Collaboration and leadership*)
 2. Learning skill (if defined, e.g. *I can engage positively with others*)
