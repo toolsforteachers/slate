@@ -67,7 +67,7 @@ An assessment object is composed of the following attributes:
 Parameter | Type | Description
 --------- | ----- | ----------
 objective | String | Objective#key
-learner | String | Learner#key
+learner | String | Learner#key or an email address
 score | Float | Less than or equal to 1. Use 0 for non-participation.
 rubric | String | Rubric#key (optional). Defaults to the authenticated user's preferred rubric.
 
@@ -229,6 +229,47 @@ This endpoint accepts a key for any attribute in the curriculum attribute hierar
 Parameter | Description
 --------- | -----------
 key | The key of the curriculum attribute to retrieve. Can be a `subject`, `level`, `topic` or `objective`
+
+# Learner
+Learners are identified by their system-generated key or an email address.
+
+## Add a new learner
+> Returns the following json:
+
+``` json
+{
+  "learner": "a-system-generated-key-for-the-learner",
+  "created": "2014-07-01T10:59:51.357Z"
+}
+```
+
+### HTTP Request
+
+`POST https://toolsforteachers.org.uk/api/v1/learners`
+
+Parameter | Type | Description
+----------| -----|------------
+name | String | Display name
+email | String | Email address
+
+## Update a learner
+> Returns the following json:
+
+``` json
+{
+  "learner": "a-system-generated-key-for-the-learner",
+  "updated": "2014-07-01T10:59:51.357Z"
+}
+```
+
+### HTTP Request
+
+`PATCH https://toolsforteachers.org.uk/api/v1/learners/:key`
+
+Parameter | Type | Description
+----------| -----|------------
+name | String | Display name
+email | String | Email address
 
 # Pedagogy
 
