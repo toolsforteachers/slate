@@ -69,6 +69,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 <li><p><code class="prettyprint">assessor</code>. The person or activity who is assessing the learner.</p></li>
 <li><p><code class="prettyprint">score</code>. A decimal representation of the learner&rsquo;s achievement, e.g. 0.6.</p></li>
 <li><p><code class="prettyprint">rubric</code>. The key of the rubric object used to define and interpret the score. A score of 0.6, for example, might be interpreted as a percentage (60%), a fraction (3/5) or a string (apprentice).</p></li>
+<li><p><code class="prettyprint">notes</code>. Free text for the assessor to record observations, comments, etc.</p></li>
 </ol>
 
 <h2 id="create-an-assessment">Create an Assessment</h2>
@@ -103,7 +104,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 <tr>
 <td>learner</td>
 <td>String</td>
-<td>Learner#key</td>
+<td>Learner#key or an email address</td>
 </tr>
 <tr>
 <td>score</td>
@@ -114,6 +115,11 @@ You must replace <code>your-api-key</code> with your personal API key.
 <td>rubric</td>
 <td>String</td>
 <td>Rubric#key (optional). Defaults to the authenticated user&rsquo;s preferred rubric.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String</td>
+<td>Free text (optional)</td>
 </tr>
 </tbody></table>
 
@@ -130,7 +136,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PATCH https://toolsforteachers.org.uk/api/v1/asessment/a-unique-identifier-for-the-assessment</code></p>
+<p><code class="prettyprint">PATCH https://toolsforteachers.org.uk/api/v1/asessments/a-unique-identifier-for-the-assessment</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -185,7 +191,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 
 <p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/curricula</code></p>
 
-<h2 id="get-a-curriculum-description">Get a Curriculum Description</h2>
+<h2 id="get-curriculum">Get Curriculum</h2>
 
 <blockquote>
 <p>Note that the attributes to be returned are defined by the <code class="prettyprint">depth</code> parameter.</p>
@@ -286,7 +292,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/curriculum-objectives/&lt;key&gt;</code></p>
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/objectives/&lt;key&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -299,6 +305,140 @@ You must replace <code>your-api-key</code> with your personal API key.
 <tr>
 <td>key</td>
 <td>The key of the curriculum attribute to retrieve. Can be a <code class="prettyprint">subject</code>, <code class="prettyprint">level</code>, <code class="prettyprint">topic</code> or <code class="prettyprint">objective</code></td>
+</tr>
+</tbody></table>
+
+<h1 id="learner">Learner</h1>
+
+<p>Learners are identified by their system-generated key or an email address.</p>
+
+<h2 id="add-a-learner">Add a Learner</h2>
+
+<blockquote>
+<p>Returns the following json:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"learner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a-system-generated-key-for-the-learner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-01T10:59:51.357Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://toolsforteachers.org.uk/api/v1/learners</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Email address</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-learner">Update a Learner</h2>
+
+<blockquote>
+<p>Returns the following json:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"learner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a-system-generated-key-for-the-learner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-01T10:59:51.357Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://toolsforteachers.org.uk/api/v1/learners/:key</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Email address</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-learner-assessment-record">Get a Learner Assessment Record</h2>
+
+<blockquote>
+<p>Returns the following json:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"learner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"learner-key"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assessments"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"assessor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assessor-key"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lipsum ipsum lorem et al"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rubric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rubric-key"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mark"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"out_of"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"objective"</span><span class="p">:</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"curriculum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maths"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 6"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algebra"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use simple formula"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"use-simple-formula"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"posted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated-or-created-date"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Retrieves learner assessents, most recent first. Includes additional fields to help UI display:</p>
+
+<ol>
+<li><p><code class="prettyprint">mark</code>. The score as a representation of the rubric.</p></li>
+<li><p><code class="prettyprint">out_of</code>. The highest achievable score as a representation of the rubric.</p></li>
+<li><p><code class="prettyprint">objective_attributes</code>. The complete attribute set for the objective</p></li>
+<li><p><code class="prettyprint">posted_at</code>. Timestamp when the record was created or updated.</p></li>
+</ol>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/learners/:key</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>Maximum number of records (optional). Defaults to 20.</td>
+</tr>
+<tr>
+<td>objective</td>
+<td>Filter by an objective (optional). Retrieves all objectives by default.</td>
 </tr>
 </tbody></table>
 
@@ -318,7 +458,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all available pedagogie</p>
+<p>This endpoint retrieves all available pedagogies</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -353,7 +493,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/pedagogy-objectives/&lt;key&gt;</code></p>
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/objectives/&lt;key&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
