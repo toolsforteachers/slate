@@ -275,7 +275,7 @@ name | String | Display name
 email | String | Email address
 
 
-## Get a Learner Activity Record
+## Get a Learner Assessment Record
 > Returns the following json:
 
 ``` json
@@ -317,6 +317,13 @@ Retrieves learner assessents, most recent first. Includes additional fields to h
 ### HTTP Request
 
 `GET https://toolsforteachers.org.uk/api/v1/learners/:key`
+
+### URL Parameters
+
+Parameter | Description
+----------|------------
+limit | Maximum number of records (optional). Defaults to 20.
+objective | Filter by an objective (optional). Retrieves all objectives by default.
 
 # Pedagogy
 
