@@ -48,6 +48,8 @@ An assessment object is composed of the following attributes:
 
 5. `rubric`. The key of the rubric object used to define and interpret the score. A score of 0.6, for example, might be interpreted as a percentage (60%), a fraction (3/5) or a string (apprentice).
 
+6. `notes`. Free text for the assessor to record observations, comments, etc.
+
 ## Create an Assessment
 > Returns the following json:
 
@@ -70,6 +72,7 @@ objective | String | Objective#key
 learner | String | Learner#key or an email address
 score | Float | Less than or equal to 1. Use 0 for non-participation.
 rubric | String | Rubric#key (optional). Defaults to the authenticated user's preferred rubric.
+notes | String | Free text (optional)
 
 ## Update an Assessment
 > Returns the following json:
@@ -283,6 +286,7 @@ email | String | Email address
     {
       "assessor": "assessor-key",
       "score": 0.6,
+      "notes": "Lipsum ipsum lorem et al",
       "rubric": "rubric-key",
       "mark": 3,
       "out_of": 5,
@@ -313,7 +317,6 @@ Retrieves learner assessents, most recent first. Includes additional fields to h
 ### HTTP Request
 
 `GET https://toolsforteachers.org.uk/api/v1/learners/:key`
-
 
 # Pedagogy
 
