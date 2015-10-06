@@ -83,7 +83,7 @@ rubric | String | Rubric#key (optional). Defaults to the authenticated user's pr
 
 ### HTTP Request
 
-`PATCH https://toolsforteachers.org.uk/api/v1/asessment/a-unique-identifier-for-the-assessment`
+`PATCH https://toolsforteachers.org.uk/api/v1/asessments/a-unique-identifier-for-the-assessment`
 
 ### Parameters
 
@@ -222,7 +222,7 @@ This endpoint accepts a key for any attribute in the curriculum attribute hierar
 
 ### HTTP Request
 
-`GET https://toolsforteachers.org.uk/api/v1/curriculum-objectives/<key>`
+`GET https://toolsforteachers.org.uk/api/v1/objectives/<key>`
 
 ### URL Parameters
 
@@ -282,10 +282,11 @@ It should be noted that a pedagogy has the following hierarchical attributes:
 
 ### HTTP Request
 
-`GET https://toolsforteachers.org.uk/api/v1/pedagogy-objectives/<key>`
+`GET https://toolsforteachers.org.uk/api/v1/objectives/<key>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 key | The key of the pedagogy to retrieve
+
