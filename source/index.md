@@ -246,7 +246,7 @@ key | The key of the curriculum attribute to retrieve. Can be a `subject`, `leve
 ]
 ```
 
-This endpoint retrieves all available pedagogie
+This endpoint retrieves all available pedagogies
 
 ### HTTP Request
 
