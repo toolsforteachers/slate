@@ -10,7 +10,7 @@ An assessment object is composed of the following attributes:
 
 4. `score`. A decimal representation of the learner's achievement, e.g. 0.6.
 
-5. `rubric`. The key of the rubric object used to define and interpret the score. A score of 0.6, for example, might be interpreted as a percentage (60%), a fraction (3/5) or a string (apprentice).
+5. `rating_scale`. The key of the rating scale used to define and interpret the score. A score of 0.6, for example, might be interpreted as a percentage (60%), a fraction (3/5) or a string ('Apprentice').
 
 6. `notes`. Free text for the assessor to record observations, comments, etc.
 
@@ -35,7 +35,7 @@ Parameter | Type | Description
 objective | String | Objective#key
 learner | String | Learner#key or an email address
 score | Float | Less than or equal to 1. Use 0 for non-participation.
-rubric | String | Rubric#key (optional). Defaults to the authenticated user's preferred rubric.
+rating_scale | String | RatingScale#key (optional). Defaults to the authenticated user's preferred rating scale.
 notes | String | Free text (optional)
 
 ## Update an Assessment

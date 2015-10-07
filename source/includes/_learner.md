@@ -52,7 +52,7 @@ email | String | Email address
       "assessor": "assessor-key",
       "score": 0.6,
       "notes": "Lipsum ipsum lorem et al",
-      "rubric": "rubric-key",
+      "rating_scale": "rating-scale-key",
       "mark": 3,
       "out_of": 5,
       "objective":
@@ -71,9 +71,9 @@ email | String | Email address
 ```
 Retrieves learner assessents, most recent first. Includes additional fields to help UI display:
 
-1. `mark`. The score as a representation of the rubric.
+1. `mark`. The score as a representation of the rating scale.
 
-2. `out_of`. The highest achievable score as a representation of the rubric.
+2. `out_of`. The highest achievable score as a representation of the rating scale.
 
 3. `objective_attributes`. The complete attribute set for the objective
 
