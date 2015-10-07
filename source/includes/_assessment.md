@@ -14,7 +14,7 @@ An assessment object is composed of the following attributes:
 
 6. `notes`. Free text for the assessor to record observations, comments, etc.
 
-## Create an Assessment
+## Log an Assessment
 > Returns the following json:
 
 ```json
@@ -38,7 +38,7 @@ score | Float | Less than or equal to 1. Use 0 for non-participation.
 rating_scale | String | RatingScale#key (optional). Defaults to the authenticated user's preferred rating scale.
 notes | String | Free text (optional)
 
-## Update an Assessment
+## Edit an Assessment
 > Returns the following json:
 
 ```json
