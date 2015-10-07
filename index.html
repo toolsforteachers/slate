@@ -74,7 +74,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 <li><p><code class="prettyprint">notes</code>. Free text for the assessor to record observations, comments, etc.</p></li>
 </ol>
 
-<h2 id="create-an-assessment">Create an Assessment</h2>
+<h2 id="log-an-assessment">Log an Assessment</h2>
 
 <blockquote>
 <p>Returns the following json:</p>
@@ -125,7 +125,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<h2 id="update-an-assessment">Update an Assessment</h2>
+<h2 id="edit-an-assessment">Edit an Assessment</h2>
 
 <blockquote>
 <p>Returns the following json:</p>
@@ -508,6 +508,70 @@ You must replace <code>your-api-key</code> with your personal API key.
 <td>The key of the pedagogy to retrieve</td>
 </tr>
 </tbody></table>
+
+          <h1 id="rating-scale">Rating Scale</h1>
+
+<h2 id="get-all-rating-scales">Get all Rating Scales</h2>
+
+<blockquote>
+<p>Returns the following json:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Likert"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating-likert"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ordinals"</span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strongly disagree"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_etc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/rating-scales</code></p>
+
+<p>The rating scale is composed of:</p>
+
+<ol>
+<li><p><code class="prettyprint">name</code>. A description given by the editor.</p></li>
+<li><p><code class="prettyprint">ordinals</code>. An ordered list of the <code class="prettyprint">name</code> and <code class="prettyprint">value</code> that describes the score.</p></li>
+<li><p><code class="prettyprint">max_score</code>. The maximum score that can be achieved.</p></li>
+<li><p><code class="prettyprint">key</code>. A system generated unique identifier.</p></li>
+</ol>
+
+<aside class='notice'>
+  A note about ordinals. The `value` attribute is the basis of the scoring system and is always numeric. The `name` attribute is an optional descriptor, intended to enhance the UI display.
+</aside>
+
+<h2 id="set-default-rating-scale">Set Default Rating Scale</h2>
+
+<blockquote>
+<p>Returns the following json:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"default_rating_scale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating-scale-key"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://toolsforteachers.org.uk/api/v1/rating-scales/default/&lt;rating-scale-key&gt;</code></p>
+
+<p>An assessor can set the default rating scale that will be used in all assessment activities. Note that this setting can be overwritten when an assessment is recorded.</p>
 
           <h1 id="errors">Errors</h1>
 
