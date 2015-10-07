@@ -70,7 +70,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 <li><p><code class="prettyprint">learner</code>. The person who is being assessed.</p></li>
 <li><p><code class="prettyprint">assessor</code>. The person or activity who is assessing the learner.</p></li>
 <li><p><code class="prettyprint">score</code>. A decimal representation of the learner&rsquo;s achievement, e.g. 0.6.</p></li>
-<li><p><code class="prettyprint">rubric</code>. The key of the rubric object used to define and interpret the score. A score of 0.6, for example, might be interpreted as a percentage (60%), a fraction (3/5) or a string (apprentice).</p></li>
+<li><p><code class="prettyprint">rating_scale</code>. The key of the rating scale used to define and interpret the score. A score of 0.6, for example, might be interpreted as a percentage (60%), a fraction (3/5) or a string (&lsquo;Apprentice&rsquo;).</p></li>
 <li><p><code class="prettyprint">notes</code>. Free text for the assessor to record observations, comments, etc.</p></li>
 </ol>
 
@@ -114,9 +114,9 @@ You must replace <code>your-api-key</code> with your personal API key.
 <td>Less than or equal to 1. Use 0 for non-participation.</td>
 </tr>
 <tr>
-<td>rubric</td>
+<td>rating_scale</td>
 <td>String</td>
-<td>Rubric#key (optional). Defaults to the authenticated user&rsquo;s preferred rubric.</td>
+<td>RatingScale#key (optional). Defaults to the authenticated user&rsquo;s preferred rating scale.</td>
 </tr>
 <tr>
 <td>notes</td>
@@ -241,7 +241,7 @@ You must replace <code>your-api-key</code> with your personal API key.
       </span><span class="nt">"assessor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assessor-key"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w">
       </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lipsum ipsum lorem et al"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"rubric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rubric-key"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating_scale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating-scale-key"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"mark"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nt">"out_of"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="nt">"objective"</span><span class="p">:</span><span class="w">
@@ -262,8 +262,8 @@ You must replace <code>your-api-key</code> with your personal API key.
 <p>Retrieves learner assessents, most recent first. Includes additional fields to help UI display:</p>
 
 <ol>
-<li><p><code class="prettyprint">mark</code>. The score as a representation of the rubric.</p></li>
-<li><p><code class="prettyprint">out_of</code>. The highest achievable score as a representation of the rubric.</p></li>
+<li><p><code class="prettyprint">mark</code>. The score as a representation of the rating scale.</p></li>
+<li><p><code class="prettyprint">out_of</code>. The highest achievable score as a representation of the rating scale.</p></li>
 <li><p><code class="prettyprint">objective_attributes</code>. The complete attribute set for the objective</p></li>
 <li><p><code class="prettyprint">posted_at</code>. Timestamp when the record was created or updated.</p></li>
 </ol>
