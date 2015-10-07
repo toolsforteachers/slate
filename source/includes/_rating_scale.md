@@ -7,30 +7,32 @@
 ``` json
 [
   {
-    "name": "Likert",
-    "key": "rating-likert",
-    "max_score": 5,
-    "ordinals":
-      [
-        {
-          "name": "N/A",
-          "value": 0
-        },
-        {
-          "name": "Strongly disagree",
-          "value": 1
-        },
-        {
-          "_etc": "..."
-        }
-      ]
-
+    "rating_scale":
+    {
+      "name": "Likert",
+      "max_score": 5,
+      "key": "rating-likert",
+      "ordinals":
+        [
+          {
+            "name": "N/A",
+            "value": 0
+          },
+          {
+            "name": "Strongly disagree",
+            "value": 1
+          },
+          {
+            "_etc": "..."
+          }
+        ]
+    }
   }
 ]
 ```
 
 ### HTTP Request
-`GET https://toolsforteachers.org.uk/api/v1/rating-scales`
+`GET https://toolsforteachers.org.uk/api/v1/rating_scales`
 
 The rating scale is composed of:
 
@@ -57,7 +59,7 @@ The rating scale is composed of:
 ```
 
 ### HTTP Request
-`PATCH https://toolsforteachers.org.uk/api/v1/rating-scales/default/<rating-scale-key>`
+`PATCH https://toolsforteachers.org.uk/api/v1/rating_scales/default/<rating-scale-key>`
 
 
 
