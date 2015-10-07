@@ -155,160 +155,6 @@ You must replace <code>your-api-key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<h1 id="curriculum">Curriculum</h1>
-
-<h2 id="get-all-available-curricula">Get all available Curricula</h2>
-
-<blockquote>
-<p>The endpoint returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"national-curriculum-in-england"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"editor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open-water-scuba-diving"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open Water Scuba Diving"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"editor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jack Custow"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all available curricula</p>
-
-<p>It should be noted that a curriculum has the following hierarchical attributes.</p>
-
-<ol>
-<li><p><code class="prettyprint">subject</code> (e.g. <em>Maths</em>)</p></li>
-<li><p><code class="prettyprint">level</code> (e.g. <em>Year 6</em>)</p></li>
-<li><p><code class="prettyprint">topic</code> (e.g. <em>Algebra</em>)</p></li>
-<li><p><code class="prettyprint">prompt</code> (if defined, e.g. <em>Students are expected to</em>)</p></li>
-<li><p><code class="prettyprint">objective</code> (e.g. <em>Enumerate possibilities of combinations of 2 variables</em>)</p></li>
-</ol>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/curricula</code></p>
-
-<h2 id="get-curriculum">Get Curriculum</h2>
-
-<blockquote>
-<p>Note that the attributes to be returned are defined by the <code class="prettyprint">depth</code> parameter.</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"national-curriculum-in-england"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"editor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-
-</span><span class="nt">"subjects"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maths"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"national-curriculum-maths"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"levels"</span><span class="p">:</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 5"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-5"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 6"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-6"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"topics"</span><span class="p">:</span><span class="w">
-              </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algebra"</span><span class="p">,</span><span class="w">
-                   </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-6-algebra"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint retrieves the descriptive attributes of a specific curriculum.</p>
-
-<p>Use the <code class="prettyprint">curriculum-attribute</code> endpoint to retrieve <code class="prettyprint">objectives</code>.</p>
-
-<p>The parameter <code class="prettyprint">depth</code> determines which attributes are retrieved for that curriculum. Choosing <code class="prettyprint">level</code>, for example, will retrieve Subject and Level attributes.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/curricula/&lt;key&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>key</td>
-<td>The key of the curriculum to retrieve</td>
-</tr>
-<tr>
-<td>depth</td>
-<td>Choose from <code class="prettyprint">subject</code>, <code class="prettyprint">level</code> or <code class="prettyprint">topic</code>. Defaults to <code class="prettyprint">level</code> (optional)</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-curriculum-objectives">Get Curriculum Objectives</h2>
-
-<blockquote>
-<p>This example json would be returned from a request for a <code class="prettyprint">topic</code> attribute with a key <code class="prettyprint">maths-year-6-algebra</code>:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"finder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-6-algebra"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"objectives"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"curriculum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maths"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 6"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algebra"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Students are expected to:"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enumerate possibilities of combinations of 2 variables"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enumerate-possibilities-of-combinations-of-2-variables"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"curriculum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maths"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 6"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algebra"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use simple formula"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"use-simple-formula"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint accepts a key for any attribute in the curriculum attribute hierarchy and returns all the objectives associated with that finder.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/objectives/&lt;key&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>key</td>
-<td>The key of the curriculum attribute to retrieve. Can be a <code class="prettyprint">subject</code>, <code class="prettyprint">level</code>, <code class="prettyprint">topic</code> or <code class="prettyprint">objective</code></td>
-</tr>
-</tbody></table>
-
 <h1 id="learner">Learner</h1>
 
 <p>Learners are identified by their system-generated key or an email address.</p>
@@ -443,9 +289,161 @@ You must replace <code>your-api-key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<h1 id="pedagogy">Pedagogy</h1>
+<h1 id="metadata">Metadata</h1>
 
-<h2 id="get-all-available-pedagogies">Get all available Pedagogies</h2>
+<h2 id="get-all-curricula">Get all Curricula</h2>
+
+<blockquote>
+<p>The endpoint returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"national-curriculum-in-england"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"editor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open-water-scuba-diving"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open Water Scuba Diving"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"editor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jack Custow"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all available curricula</p>
+
+<p>It should be noted that a curriculum has the following hierarchical attributes.</p>
+
+<ol>
+<li><p><code class="prettyprint">subject</code> (e.g. <em>Maths</em>)</p></li>
+<li><p><code class="prettyprint">level</code> (e.g. <em>Year 6</em>)</p></li>
+<li><p><code class="prettyprint">topic</code> (e.g. <em>Algebra</em>)</p></li>
+<li><p><code class="prettyprint">prompt</code> (if defined, e.g. <em>Students are expected to</em>)</p></li>
+<li><p><code class="prettyprint">objective</code> (e.g. <em>Enumerate possibilities of combinations of 2 variables</em>)</p></li>
+</ol>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/metadata/curricula</code></p>
+
+<h2 id="get-a-curriculum">Get a Curriculum</h2>
+
+<blockquote>
+<p>Note that the attributes to be returned are defined by the <code class="prettyprint">depth</code> parameter.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"national-curriculum-in-england"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"editor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+
+</span><span class="nt">"subjects"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maths"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"national-curriculum-maths"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"levels"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 5"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-5"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 6"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-6"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"topics"</span><span class="p">:</span><span class="w">
+              </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algebra"</span><span class="p">,</span><span class="w">
+                   </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-6-algebra"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves the descriptive attributes of a specific curriculum.</p>
+
+<p>Use the <code class="prettyprint">curriculum-attribute</code> endpoint to retrieve <code class="prettyprint">objectives</code>.</p>
+
+<p>The parameter <code class="prettyprint">depth</code> determines which attributes are retrieved for that curriculum. Choosing <code class="prettyprint">level</code>, for example, will retrieve Subject and Level attributes.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/metadata/curricula/&lt;key&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>key</td>
+<td>The key of the curriculum to retrieve</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>Choose from <code class="prettyprint">subject</code>, <code class="prettyprint">level</code> or <code class="prettyprint">topic</code>. Defaults to <code class="prettyprint">level</code> (optional)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-curriculum-objectives">Get Curriculum Objectives</h2>
+
+<blockquote>
+<p>This example json would be returned from a request for a <code class="prettyprint">topic</code> attribute with a key <code class="prettyprint">maths-year-6-algebra</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"finder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maths-year-6-algebra"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"objectives"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"curriculum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maths"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 6"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algebra"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Students are expected to:"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enumerate possibilities of combinations of 2 variables"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enumerate-possibilities-of-combinations-of-2-variables"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"curriculum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Curriculum in England"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maths"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Year 6"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algebra"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use simple formula"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"use-simple-formula"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint accepts a key for any attribute in the curriculum attribute hierarchy and returns all the objectives associated with that finder.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/metadata/objectives/&lt;key&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>key</td>
+<td>The key of the curriculum attribute to retrieve. Can be a <code class="prettyprint">subject</code>, <code class="prettyprint">level</code>, <code class="prettyprint">topic</code> or <code class="prettyprint">objective</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-pedagogies">Get all Pedagogies</h2>
 
 <blockquote>
 <p>The endpoint returns JSON structured like this:</p>
@@ -463,7 +461,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/pedagogies</code></p>
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/metadata/pedagogies</code></p>
 
 <h2 id="get-pedagogy-objectives">Get Pedagogy Objectives</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -494,7 +492,7 @@ You must replace <code>your-api-key</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/objectives/&lt;key&gt;</code></p>
+<p><code class="prettyprint">GET https://toolsforteachers.org.uk/api/v1/metadata/objectives/&lt;key&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
