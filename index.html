@@ -518,24 +518,26 @@ You must replace <code>your-api-key</code> with your personal API key.
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Likert"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating-likert"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ordinals"</span><span class="p">:</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strongly disagree"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"_etc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-
+    </span><span class="nt">"rating_scale"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Likert"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating-likert"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ordinals"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strongly disagree"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"_etc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
