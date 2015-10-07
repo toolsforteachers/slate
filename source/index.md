@@ -11,6 +11,7 @@ includes:
   - assessment
   - learner
   - metadata
+  - rating_scale
   - errors
 
 search: true
